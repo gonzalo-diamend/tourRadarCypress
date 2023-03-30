@@ -140,10 +140,10 @@ Cypress.Commands.add('login', () => {
     cy.contains(loginButton).click({force:true})
     cy.get(emailTxt).type(`${Cypress.config('emailAdmin')}`)
     cy.get(passwordTxt).type(`${Cypress.config('passwordAdmin')}`)
+    cy.beVisible(acceptCookies);
+    cy.itExist(acceptCookies);
+    cy.doClick(acceptCookies);
     cy.get(signInBtn).click()
-   // cy.beVisible(acceptCookies);
-    //cy.itExist(acceptCookies);
-    //cy.doClick(acceptCookies);
 })
 
 Cypress.Commands.add('logout', () => {
