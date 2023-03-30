@@ -9,6 +9,13 @@ describe('Europe tour Validation page', () => {
     cy.logout()
   })
 
+  it('Add and remove a favourite tour', () => {
+    cy.login()
+    tourComponentPage.addFavouriteTour()
+    tourComponentPage.removeFavouriteTour()
+    cy.logout()
+  })
+
   it('Components and tour example', () => {
     cy.login()
     tourComponentPage.componentValidation()

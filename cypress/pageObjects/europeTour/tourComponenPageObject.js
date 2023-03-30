@@ -23,13 +23,25 @@ const europeTourDownloadInfo = '[itemscope=""][data-id="93235"] > .br > .br__but
 const europeTourViewMoreButton = '[itemscope=""][data-id="93235"] > .br > .br__button-wrapper > .aa-btn--primary';
 const closeBrochure = '[data-cy="common-brochure-modal--close-btn"]';
 const downloadBrochureButton = '[data-cy="common-download-brochure--submit"]';
-
+const addFavouriteButton = '[itemscope=""][data-id="93235"] > .bl > .sbtn';
+const favouriteImage = '.image';
+const addTourButton = '.icon';
+const createWishlist ='.new';
+const doneButtonFavourites = '.content > .but';
+const favouritesPage = '[data-cy="common-header--navigation"] > .ao-header-navigation__wishlist > .ao-header-navigation__wishlist-link';
+const componentFavouritesPage = 'main.owner';
+const showAllListsButton = '.soc > .blue';
+const sendListButton = '.wishlist_email';
+const tourInfoFavouritesPage = '.tour';
+const removeFavouriteButton = '.sbtn';
 // Data
 const europeTourText ='  250+ Europe tour packages  with 36,010 reviews';
 const chatBotText = 'Need help?';
 const logExtraValidation = 'Cookies and chatbot validation';
 const logComponentValidation = 'Component and Tour validation';
 const logComponentButtons = 'Test buttons of the tour example';
+const logAddFavourite = 'Add a tour as a favourite';
+const logRemoveFavourite = 'Remove a tour as a favourite';
 const valueTour1 = 'Destinations';
 const valueTour2 = 'Age Range';
 const valueTour3 = 'Travel Style';
@@ -95,18 +107,59 @@ export class tourComponentPage extends basePage {
         cy.beVisible(europeTourViewMoreButton);
         cy.itExist(europeTourViewMoreButton);
         cy.doClick(europeTourViewMoreButton);
-
-
-
-
     }
 
+    static addFavouriteTour( ){
+        cy.log(logAddFavourite)
+        cy.beVisible(europeTourExample);
+        cy.itExist(europeTourExample);
+        cy.beVisible(addFavouriteButton);
+        cy.itExist(addFavouriteButton);
+        cy.doClick(addFavouriteButton)
+        cy.beVisible(favouriteImage);
+        cy.itExist(favouriteImage);
+        cy.beVisible(createWishlist);
+        cy.itExist(createWishlist);
+        cy.beVisible(addTourButton);
+        cy.itExist(addTourButton);
+        cy.doClick(addTourButton)
+        cy.beVisible(doneButtonFavourites);
+        cy.itExist(doneButtonFavourites);
+        cy.doClick(doneButtonFavourites)
+            
+    }
+    static removeFavouriteTour( ){
+        cy.log(logRemoveFavourite)
+        cy.beVisible(favouritesPage);
+        cy.itExist(favouritesPage);
+        cy.doClick(favouritesPage)
+        cy.beVisible(componentFavouritesPage);
+        cy.itExist(componentFavouritesPage);
+        cy.beVisible(showAllListsButton);
+        cy.itExist(showAllListsButton);
+        cy.get(showAllListsButton).should('not.be.disabled')
+        cy.beVisible(sendListButton);
+        cy.itExist(sendListButton);
+        cy.get(showAllListsButton).should('not.be.disabled')
+        cy.beVisible(tourInfoFavouritesPage);
+        cy.itExist(tourInfoFavouritesPage);
+        cy.beVisible(removeFavouriteButton);
+        cy.itExist(removeFavouriteButton);
+        cy.doClick(removeFavouriteButton);
+        cy.beVisible(addTourButton);
+        cy.itExist(addTourButton);
+        cy.doClick(addTourButton);
+        cy.beVisible(doneButtonFavourites);
+        cy.itExist(doneButtonFavourites);
+        cy.doClick(doneButtonFavourites);
+        cy.visit('/')
+    }
+
+    
     static extraValidation( ){
         cy.log(logExtraValidation)
         cy.itExist(chatBotButton);
         cy.itContain(chatBotTitle, chatBotText);
-        {setTimeout, 10000}
-
 
     }
 
