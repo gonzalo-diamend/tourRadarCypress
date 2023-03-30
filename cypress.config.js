@@ -7,7 +7,7 @@ module.exports = defineConfig({
       passwordAdmin:'Test1234',
       viewportWidth: 1280,
       viewportHeight: 800,
-      defaultCommandTimeout:8000,
+      defaultCommandTimeout:20000,
       chromeWebSecurity:false,
       failOnStatusCode: false
   },

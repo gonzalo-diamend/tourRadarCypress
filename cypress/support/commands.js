@@ -133,12 +133,16 @@ Cypress.Commands.add("closeDrawer", () => {
 */
 
 Cypress.Commands.add('login', () => {
+    const acceptCookies = '.aa-btn--primary.cn-button__desktop';
     cy.visit('/')
     cy.get(loginPlaceholder).click({force:true})
     cy.contains(loginButton).click({force:true})
     cy.get(emailTxt).type(`${Cypress.config('emailAdmin')}`)
     cy.get(passwordTxt).type(`${Cypress.config('passwordAdmin')}`)
     cy.get(signInBtn).click()
+    cy.beVisible(acceptCookies);
+    cy.itExist(acceptCookies);
+    cy.doClick(acceptCookies);
 })
 
 Cypress.Commands.add('logout', () => {
